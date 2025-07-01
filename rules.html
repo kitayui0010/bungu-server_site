@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="文房具好きのための鯖（文具鯖）のDiscordサーバー公式ルールです。快適なコミュニティ運営のための禁止事項、警告レベル、運営体制についてご確認いただけます。">
+  <meta name="keywords" content="文房具, 文具, Discord, サーバー, ルール, 禁止事項, 警告, BAN, 運営体制, 文具鯖, 文房具好きのための鯖">
+  <meta name="author" content="文房具好きのための鯖 運営">
+  <meta property="og:title" content="ルール - 文房具好きのための鯖">
+  <meta property="og:description" content="文房具好きのための鯖（文具鯖）のDiscordサーバー公式ルールです。快適なコミュニティ運営のための禁止事項、警告レベル、運営体制についてご確認いただけます。">
+  <meta property="og:url" content="https://your-website-url.com/rules.html"> <meta property="og:image" content="https://your-website-url.com/images/ogp_image.png"> <meta property="og:type" content="website">
+  <meta property="og:site_name" content="文房具好きのための鯖">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>ルール - 文房具好きの鯖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="notification-banner"></div>
+  <div class="overlay" id="overlay" role="presentation" aria-hidden="true"></div>
+
+  <header>
+    <nav aria-label="メインナビゲーション">
+      <button class="menu-button" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" aria-label="メニューを開く">
+        <span class="bar top"></span>
+        <span class="bar bottom"></span>
+      </button>
+    </nav>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">文房具好きのための鯖</a></h1>
+    <div class="avatar-button" id="avatarBtn" aria-haspopup="true" aria-expanded="false" aria-label="ユーザーメニュー">
+      <img id="avatarIcon" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="ログインアイコン" />
+      <div class="loading-spinner" id="loadingSpinner" style="display: none;" role="status" aria-label="読み込み中"></div>
+    </div>
+    <div class="dropdown" id="dropdownMenu">
+      <div class="profile-info" id="profileInfo">
+        <img id="profileAvatar" src="" alt="プロフィールアバター" class="dropdown-avatar">
+        <span id="profileUsername" class="dropdown-username"></span>
+        <span id="profileId" class="dropdown-id"></span>
+      </div>
+      <a href="#" id="loginLink" role="button">Discordでログイン</a>
+      <a href="#" id="logoutLink" style="display:none;" role="button">ログアウト</a>
+    </div>
+  </header>
+
+  <div class="side-menu" id="sideMenu" aria-hidden="true" tabindex="-1">
+  <a href="index.html">ホーム</a>
+  <a href="team.html">運営体制</a>
+  <a href="rules.html">ルール</a>
+  <a href="supporters.html">支援者</a>
+  <a href="ban-appeal.html">BAN解除申請</a>
+  
+  <div class="dark-mode-toggle-container"> <span>ダークモード</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeSwitch" aria-label="ダークモード切り替え">
+      <span class="slider round"></span>
+    </label>
+  </div>
+</div>
+
+  <main>
+    <h2 class="main-page-title">サーバールール</h2>
+
+    <div class="rules-container">
+
+      <section class="content-section">
+        <h3 class="rule-article-title">第1条（ルールの適用）</h3>
+        <p>このサーバーに参加した時点で、すべてのメンバーは本ルールに同意し、適用されることになります。ルールを守り、他のメンバーと楽しく交流できるように努めてください。</p>
+      </section>
+
+      <section class="content-section">
+        <h3 class="rule-article-title">第2条（禁止事項および違反時の対応）</h3>
+        <p>当サーバーでは、以下の行為を禁止しています。違反が確認された場合、警告レベルに応じた対応を行います。</p>
+        
+        <div class="warning-levels-grid">
+          <div class="warning-level-card">
+            <h3 class="wlc-title">警告レベル 1</h3>
+            <h4 class="wlc-subtitle">該当する行為</h4>
+            <ul>
+              <li><strong>不快な発言</strong>： 閲覧注意チャンネル以外での下ネタなどの見ていて不快になる発言など。</li>
+            </ul>
+            <p class="wlc-punishment">タイムアウト10分・警告</p>
+          </div>
+
+          <div class="warning-level-card">
+            <h3 class="wlc-title">警告レベル 2</h3>
+            <h4 class="wlc-subtitle">該当する行為</h4>
+            <ul>
+              <li><strong>NSFWコンテンツの利用</strong>：プロフィールアイコンやユーザーネームに成人向けコンテンツを設定する行為。</li>
+            </ul>
+            <p class="wlc-punishment">タイムアウト30分・警告</p>
+          </div>
+
+          <div class="warning-level-card">
+            <h3 class="wlc-title">警告レベル 3</h3>
+            <h4 class="wlc-subtitle">該当する行為</h4>
+            <ul>
+              <li><strong>ハラスメント行為</strong>：他人への嫌がらせ、侮辱、誹謗中傷など。</li>
+              <li><strong>悪質ななりすまし</strong>：他のメンバーや有名人などに悪意を持ってなりすます行為。</li>
+              <li><strong>NSFWコンテンツの投稿</strong>：成人向けコンテンツの投稿。</li>
+              <li><strong>個人情報の共有</strong>：本人の許可なく、個人情報を共有する行為。</li>
+              <li><strong>違反サーバーへの参加</strong>：ルールに違反している外部サーバーへの参加。</li>
+            </ul>
+            <p class="wlc-punishment">タイムアウト60分・警告</p>
+          </div>
+
+          <div class="warning-level-card">
+            <h3 class="wlc-title">警告レベル 4</h3>
+            <h4 class="wlc-subtitle">該当する行為</h4>
+            <ul>
+              <li><strong>サーバーの引き抜き行為</strong>：当サーバー内やDMでの他のサーバーへの勧誘や宣伝。</li>
+            </ul>
+            <div class="rule-exception">
+              <p>例外：メンバーが5人以下の身内用サーバーへの招待は認められます。ただし、5人を超えた時点でルール違反となります。</p>
+            </div>
+            <p class="wlc-punishment">タイムアウト24時間・最終警告</p>
+          </div>
+
+          <div class="warning-level-card">
+            <h3 class="wlc-title">警告レベル 5</h3>
+            <h4 class="wlc-subtitle">該当する行為</h4>
+            <ul>
+              <li><strong>Discordの規約違反</strong></li>
+              <li><strong>違法行為の助長</strong>：犯罪を促す・扇動する行為。</li>
+              <li><strong>荒らし・スパム行為</strong></li>
+              <li><strong>荒らしサーバーの運営</strong></li>
+            </ul>
+            <p class="wlc-punishment">即時BAN</p>
+          </div>
+        </div>
+
+        <h4 class="rule-subheader" style="margin-top: 2.5rem;">【対応方針補足】</h4>
+        <ul>
+            <li><strong>警告レベルの変動</strong>：警告レベルはあくまで基準です。悪質度や繰り返しなどの状況に応じて、警告レベルが上下する可能性があります。</li>
+            <li><strong>警告レベルの減少</strong>：一日に一回0.1レベル減少します。</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h3 class="rule-article-title">第3条（違反報告について）</h3>
+        <p>ルール違反、不審な人物を発見した場合は、<span class="discord-channel-mention">#通報チャンネル</span>にて通報してください。運営チームが確認し、適切に対応します。</p>
+      </section>
+      
+      <section class="content-section">
+        <h3 class="rule-article-title">第4条（運営の選出）</h3>
+        <h4 class="rule-subheader">管理者の選出について</h4>
+        <ul>
+          <li>管理者は立候補者から鯖主が選出します。</li>
+          <li>立候補できる人は常連さんのみです。</li>
+        </ul>
+        <h4 class="rule-subheader">準管理者の選出について</h4>
+        <ul>
+          <li>準管理者は立候補者から選挙で選出します。</li>
+          <li>立候補できる人は常連さんのみです。</li>
+          <li>選挙権を持つ人は常連さんのみです。</li>
+        </ul>
+        <h4 class="rule-subheader">ボイスチャット管理者の選出について</h4>
+        <ul>
+          <li>ボイスチャット管理者は管理者、準管理者が選出します。</li>
+        </ul>
+      </section>
+      
+      <section class="content-section">
+        <h3 class="rule-article-title">第5条（運営引き継ぎについて）</h3>
+        <p>サーバー主がサーバーの管理を継続できなくなった場合、管理者がサーバー運営の責任を引き継ぎます。運営チームの許可なく、一般メンバーが勝手に後継サーバーを作成することは禁止します。</p>
+      </section>
+      
+      <section class="content-section">
+        <h3 class="rule-article-title">第6条（ルール改定について）</h3>
+        <p>このルールは運営チームの判断により、予告なく変更・追加・削除される場合があります。改定後は必ず案内しますので、最新のルールを確認するようお願いします。</p>
+      </section>
+
+    </div>
+  </main>
+  
+  <footer>
+    <small>©2024-2025 文房具好きのための鯖 | Bungu_server</small><br>
+    <small>当ホームページの内容について、ホームページ管理者からの許可なしに複製、転用することを禁じます。</small>
+  </footer>
+
+  <div id="errorToast" class="error-toast" role="alert" aria-live="assertive"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

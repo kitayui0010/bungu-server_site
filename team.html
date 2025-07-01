@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="文房具好きのための鯖（文具鯖）を支える運営チームの紹介ページです。鯖主、管理者、準管理者、ボイスチャット管理者の役割とメンバー一覧を掲載しています。">
+  <meta name="keywords" content="文房具, 文具, Discord, サーバー, 運営, 管理者, チーム, メンバー, 文具鯖, 文房具好きのための鯖">
+  <meta name="author" content="文房具好きのための鯖 運営">
+  <meta property="og:title" content="運営体制 - 文房具好きのための鯖">
+  <meta property="og:description" content="文房具好きのための鯖（文具鯖）を支える運営チームの紹介ページです。鯖主、管理者、準管理者、ボイスチャット管理者の役割とメンバー一覧を掲載しています。">
+  <meta property="og:url" content="https://your-website-url.com/team.html"> 
+  <meta property="og:image" content="https://your-website-url.com/images/ogp_image.png"> 
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="文房具好きのための鯖">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>運営体制 - 文房具好きの鯖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="notification-banner"></div>
+  <div class="overlay" id="overlay" role="presentation" aria-hidden="true"></div>
+
+  <header>
+    <nav aria-label="メインナビゲーション">
+      <button class="menu-button" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" aria-label="メニューを開く">
+        <span class="bar top"></span>
+        <span class="bar bottom"></span>
+      </button>
+    </nav>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">文房具好きのための鯖</a></h1>
+    <div class="avatar-button" id="avatarBtn" aria-haspopup="true" aria-expanded="false" aria-label="ユーザーメニュー">
+      <img id="avatarIcon" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="ログインアイコン" />
+      <div class="loading-spinner" id="loadingSpinner" style="display: none;" role="status" aria-label="読み込み中"></div>
+    </div>
+    <div class="dropdown" id="dropdownMenu">
+      <div class="profile-info" id="profileInfo">
+        <img id="profileAvatar" src="" alt="プロフィールアバター" class="dropdown-avatar">
+        <span id="profileUsername" class="dropdown-username"></span>
+        <span id="profileId" class="dropdown-id"></span>
+      </div>
+      <a href="#" id="loginLink" role="button">Discordでログイン</a>
+      <a href="#" id="logoutLink" style="display:none;" role="button">ログアウト</a>
+    </div>
+  </header>
+
+ <div class="side-menu" id="sideMenu" aria-hidden="true" tabindex="-1">
+  <a href="index.html">ホーム</a>
+  <a href="team.html">運営体制</a>
+  <a href="rules.html">ルール</a>
+  <a href="supporters.html">支援者</a>
+  <a href="ban-appeal.html">BAN解除申請</a>
+  
+  <div class="dark-mode-toggle-container"> <span>ダークモード</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeSwitch" aria-label="ダークモード切り替え">
+      <span class="slider round"></span>
+    </label>
+  </div>
+</div>
+
+  <main>
+    <h2 class="main-page-title">運営体制</h2>
+    
+    <section class="content-section">
+      <p class="section-description" style="margin-top:0; padding-top:0;">
+        サーバーは以下のメンバーによって運営されています。何か問題や相談があれば、適切な役職のメンバーにご連絡ください。
+      </p>
+
+      <div class="role-block">
+        <h3 class="role-title">鯖主</h3>
+        <p class="role-description">サーバーの全ての権限を持っています。またBANなどの最終決定を行います。</p>
+        <ul class="member-list">
+          <li class="member-item">
+            <img class="member-avatar" src="images/kitayui0010.png" alt="しらるうのアイコン">
+            <div class="member-info">
+              <span class="member-name">しらるう</span>
+              <span class="member-id">@kitayui0010</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <h3 class="role-title">管理者</h3>
+        <p class="role-description">サーバーの全ての権限を持っています。またBANなどの最終決定を行います。</p>
+        <ul class="member-list">
+          <li class="member-item">
+            <img class="member-avatar" src="images/sub7777.png" alt="里願 さぶのアイコン">
+            <div class="member-info">
+              <span class="member-name">里願 さぶ</span>
+              <span class="member-id">@sub7777</span>
+            </div>
+          </li>
+          <li class="member-item">
+            <img class="member-avatar" src="images/nekomimibelfast.png" alt="猫耳ベルファストのアイコン">
+            <div class="member-info">
+              <span class="member-name">猫耳ベルファスト</span>
+              <span class="member-id">@nekomimibelfast</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <h3 class="role-title">準管理者</h3>
+        <p class="role-description">ボイスチャットなどのメンバーの管理やタイムアウトなどの一時的な対応を行います。</p>
+        <ul class="member-list">
+          <li class="member-item">
+            <img class="member-avatar" src="images/hakobecraftbase.png" alt="はこべ工作のアイコン">
+            <div class="member-info">
+              <span class="member-name">はこべ工作</span>
+              <span class="member-id">@hakobecraftbase</span>
+            </div>
+          </li>
+          <li class="member-item">
+            <img class="member-avatar" src="images/tanayoku._.da.png" alt="単色団子のアイコン">
+            <div class="member-info">
+              <span class="member-name">単色団子</span>
+              <span class="member-id">@tanayoku._.da</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <h3 class="role-title">ボイスチャット管理者</h3>
+        <p class="role-description">ボイスチャットの管理を行います。</p>
+        <ul class="member-list">
+          <li class="member-item">
+            <img class="member-avatar" src="images/admiral_koonn.png" alt="こーんのアイコン">
+            <div class="member-info">
+              <span class="member-name">こーん</span>
+              <span class="member-id">@admiral_koonn</span>
+            </div>
+          </li>
+          <li class="member-item">
+            <img class="member-avatar" src="images/arb_v.png" alt="あるばのアイコン">
+            <div class="member-info">
+              <span class="member-name">あるば</span>
+              <span class="member-id">@arb_v</span>
+            </div>
+          </li>
+          <li class="member-item">
+            <img class="member-avatar" src="images/osarusandayu036.png" alt="お猿さんのアイコン">
+            <div class="member-info">
+              <span class="member-name">お猿さん</span>
+              <span class="member-id">@osarusandayu036</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+  
+  <footer>
+    <small>©2024-2025 文房具好きのための鯖 | Bungu_server</small><br>
+    <small>当ホームページの内容について、ホームページ管理者からの許可なしに複製、転用することを禁じます。</small>
+  </footer>
+
+  <div id="errorToast" class="error-toast" role="alert" aria-live="assertive"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

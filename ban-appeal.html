@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="文房具好きのための鯖（文具鯖）でBANされた方のための公式解除申請フォームです。必要事項をご記入いただき、サーバーへの復帰をご希望の方はこちらから申請してください。">
+  <meta name="keywords" content="文房具, 文具, Discord, サーバー, BAN, 解除, 申請, フォーム, 文具鯖, 文房具好きのための鯖">
+  <meta name="author" content="文房具好きのための鯖 運営">
+  <meta property="og:title" content="BAN解除申請 - 文房具好きのための鯖">
+  <meta property="og:description" content="文房具好きのための鯖（文具鯖）でBANされた方のための公式解除申請フォームです。必要事項をご記入いただき、サーバーへの復帰をご希望の方はこちらから申請してください。">
+  <meta property="og:url" content="https://your-website-url.com/ban-appeal.html"> <meta property="og:image" content="https://your-website-url.com/images/ogp_image.png"> <meta property="og:type" content="website">
+  <meta property="og:site_name" content="文房具好きのための鯖">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>BAN解除申請 - 文房具好きの鯖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="notification-banner"></div>
+  <div class="overlay" id="overlay" role="presentation" aria-hidden="true"></div>
+
+  <header>
+    <nav aria-label="メインナビゲーション">
+      <button class="menu-button" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" aria-label="メニューを開く">
+        <span class="bar top"></span>
+        <span class="bar bottom"></span>
+      </button>
+    </nav>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">文房具好きのための鯖</a></h1>
+    <div class="avatar-button" id="avatarBtn" aria-haspopup="true" aria-expanded="false" aria-label="ユーザーメニュー">
+      <img id="avatarIcon" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="ログインアイコン" />
+      <div class="loading-spinner" id="loadingSpinner" style="display: none;" role="status" aria-label="読み込み中"></div>
+    </div>
+    <div class="dropdown" id="dropdownMenu">
+      <div class="profile-info" id="profileInfo">
+        <img id="profileAvatar" src="" alt="プロフィールアバター" class="dropdown-avatar">
+        <span id="profileUsername" class="dropdown-username"></span>
+        <span id="profileId" class="dropdown-id"></span>
+      </div>
+      <a href="#" id="loginLink" role="button">Discordでログイン</a>
+      <a href="#" id="logoutLink" style="display:none;" role="button">ログアウト</a>
+    </div>
+  </header>
+
+  <div class="side-menu" id="sideMenu" aria-hidden="true" tabindex="-1">
+  <a href="index.html">ホーム</a>
+  <a href="team.html">運営体制</a>
+  <a href="rules.html">ルール</a>
+  <a href="supporters.html">支援者</a>
+  <a href="ban-appeal.html">BAN解除申請</a>
+  
+  <div class="dark-mode-toggle-container"> <span>ダークモード</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeSwitch" aria-label="ダークモード切り替え">
+      <span class="slider round"></span>
+    </label>
+  </div>
+</div>
+
+  <main>
+    <h2 class="main-page-title">BAN解除申請フォーム</h2>
+    
+    <section class="content-section">
+      <p class="section-description">
+        当サーバーにてBANされた方が、解除を申請するためのフォームです。<br>
+        以下のフォームに必要事項を記入し、送信してください。
+      </p>
+      
+      <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfqPZMTRjo7hFpmqG1JHx2FWkJ3kiILjqmxXph_dU0uhBDzDA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" title="BAN解除申請フォーム">読み込んでいます…</iframe>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <small>©2024-2025 文房具好きのための鯖 | Bungu_server</small><br>
+    <small>当ホームページの内容について、ホームページ管理者からの許可なしに複製、転用することを禁じます。</small>
+  </footer>
+
+  <div id="errorToast" class="error-toast" role="alert" aria-live="assertive"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

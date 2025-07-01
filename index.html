@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="「文房具好きのための鯖（文具鯖）」は、シャープペン、万年筆、インク、紙など文房具愛好家が集まる国内最大級のDiscordサーバーです。購入相談、レビュー、雑談で盛り上がろう！">
+  <meta name="keywords" content="文房具, 文具, Discord, サーバー, コミュニティ, シャーペン, 万年筆, インク, 文具鯖, 文房具好きのための鯖">
+  <meta name="author" content="文房具好きのための鯖 運営">
+  <meta property="og:title" content="文房具好きのための鯖 公式サイト">
+  <meta property="og:description" content="国内最大級の文房具Discordサーバー「文房具好きのための鯖（文具鯖）」公式サイト。シャープペンシル、万年筆、インクなどの文房具について語り合えるコミュニティです。">
+  <meta property="og:url" content="https://your-website-url.com/index.html"> <meta property="og:image" content="https://your-website-url.com/images/ogp_image.png"> <meta property="og:type" content="website">
+  <meta property="og:site_name" content="文房具好きのための鯖">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>文房具好きの鯖 - 公式サイト</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="notification-banner"></div> 
+  <div class="overlay" id="overlay" role="presentation" aria-hidden="true"></div>
+
+  <header>
+    <nav aria-label="メインナビゲーション">
+      <button class="menu-button" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" aria-label="メニューを開く">
+        <span class="bar top"></span>
+        <span class="bar bottom"></span>
+      </button>
+    </nav>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">文房具好きのための鯖</a></h1>
+    <div class="avatar-button" id="avatarBtn" aria-haspopup="true" aria-expanded="false" aria-label="ユーザーメニュー">
+      <img id="avatarIcon" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="ログインアイコン" />
+      <div class="loading-spinner" id="loadingSpinner" style="display: none;" role="status" aria-label="読み込み中"></div>
+    </div>
+    <div class="dropdown" id="dropdownMenu">
+      <div class="profile-info" id="profileInfo">
+        <img id="profileAvatar" src="" alt="プロフィールアバター" class="dropdown-avatar">
+        <span id="profileUsername" class="dropdown-username"></span>
+        <span id="profileId" class="dropdown-id"></span>
+      </div>
+      <a href="#" id="loginLink" role="button">Discordでログイン</a>
+      <a href="#" id="logoutLink" style="display:none;" role="button">ログアウト</a>
+    </div>
+  </header>
+
+  <div class="side-menu" id="sideMenu" aria-hidden="true" tabindex="-1">
+    <a href="index.html">ホーム</a>
+    <a href="team.html">運営体制</a>
+    <a href="rules.html">ルール</a>
+    <a href="supporters.html">支援者</a>
+    <a href="ban-appeal.html">BAN解除申請</a>
+    <div class="dark-mode-toggle-container">
+      <span>ダークモード</span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeSwitch" aria-label="ダークモード切り替え">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <h2>文房具好き、集まれ！</h2>
+      <p>国内最大級の文房具サーバーへようこそ。<br>200人以上が参加中！</p>
+      <a class="btn" href="https://discord.gg/gpujPAt4T7" target="_blank" rel="noopener noreferrer">今すぐ参加</a>
+    </section>
+
+    <section class="content-section" id="what-we-do">
+      <h3>サーバーの特徴</h3>
+      <p class="section-description">
+        文房具好きが気軽に集まって、好きなものを語り合える場所です。
+      </p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h4>みんなで深く語る</h4>
+          <p>シャープペンシル、万年筆、インク、多機能ペンなどについて、あなたの「好き」をとことん語り合えます。<br>「#文房具雑談」や「#購入品紹介」チャンネルでみんなで話そう！</p>
+        </div>
+        <div class="feature-item">
+          <h4>購入相談やレビューが活発</h4>
+          <p>「このシャーペン、書き心地どう？」「この紙インクがにじまない？」<br>そんな購入前の悩みも、経験豊富なメンバーが親身に相談に乗ってくれます。</p>
+        </div>
+        <div class="feature-item">
+          <h4>文房具好き以外の雑談も</h4>
+          <p>「2次関数がわからなぁい」「AIって何使ってるの？」<br>勉強、日常についてなどの雑談もとても活発なサーバーです！</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="custom-layout-container">
+    
+      <div class="custom-layout-left">
+        <section class="content-section" id="events">
+          <h3>毎月開催！様々なイベント</h3>
+          <p class="section-description">
+            当サーバーでは、メンバーが主催・参加できる様々なオンラインイベントを定期的に開催しています。人見知りの方でも、イベントをきっかけにきっと会話が弾むはず。
+          </p>
+          <ul class="event-list">
+            <li>写真コンテスト</li>
+            <li>筆箱晒し大会</li>
+            <li>部屋、机晒し大会</li>
+            <li>など</li>
+          </ul>
+        </section>
+    
+        <section class="content-section" id="faq">
+          <h3>よくある質問 (FAQ)</h3>
+          <div class="faq-container">
+            <details class="faq-item">
+              <summary>文房具初心者でも大丈夫ですか？</summary>
+              <p>もちろん大歓迎です。どんな些細な質問でも優しいメンバーが答えてくれます。<br>あなたを文房具の沼に引きずり込みます</p>
+            </details>
+            <details class="faq-item">
+              <summary>何歳が対象のサーバーですか？</summary>
+              <p>学生から社会人まで、幅広い年代の方がいます。年齢や立場に関係なく、文房具好きとして交流を楽しんでいます。</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    
+      <div class="custom-layout-right">
+        <section class="content-section">
+          <h3>サーバーの様子</h3>
+          <iframe src="https://discord.com/widget?id=1344243270783467563" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" title="Discordサーバーウィジェット"></iframe>
+        </section>
+      </div>
+    
+    </div>
+
+    <section class="content-section" id="join">
+      <h3>今日からあなたも仲間入り！</h3>
+      <div class="join-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>招待リンクをクリック</h4>
+          <p>ページ上部にある「今すぐ参加」ボタンから、サーバーに参加してください。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>ルールを確認</h4>
+          <p>はじめにルールを確認し同意してください。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>自己紹介をしてみよう！</h4>
+          <p>「#自己紹介」チャンネルで好きな文房具などを投稿すると、他のメンバーがあなたのことを知ることができます。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <small>©2024-2025 文房具好きのための鯖 | Bungu_server</small><br>
+    <small>当ホームページの内容について、ホームページ管理者からの許可なしに複製、転用することを禁じます。</small>
+  </footer>
+
+  <div id="errorToast" class="error-toast" role="alert" aria-live="assertive"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1225 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+:root {
+  --header-height: 70px;
+  --theme-color: #f4d32f; /* メインテーマカラー */
+
+  /* ライトモードのカラー変数 */
+  --bg-color: #f5f7fa;
+  --card-bg-light: rgba(255, 255, 255, 0.3);
+  --card-bg-medium: rgba(255, 255, 255, 0.4);
+  --header-bg-start: rgba(255, 255, 255, 0.5);
+  --header-bg-end: rgba(240, 240, 240, 0.5);
+  --text-color: #333;
+  --sub-text-color: #555;
+  --border-color-light: rgba(0, 0, 0, 0.1);
+  --border-color-medium: rgba(238, 238, 238, 0.5);
+  --dropdown-border-color: rgba(204, 204, 204, 0.5);
+  --shadow-color-light: rgba(0, 0, 0, 0.1);
+  --shadow-color-dark: rgba(0, 0, 0, 0.2);
+  --shadow-color-hover: rgba(0, 0, 0, 0.25);
+  --spinner-border-color: rgba(0, 0, 0, 0.1);
+  --spinner-left-color: #333;
+  --error-toast-bg: #d9534f;
+  --link-hover-bg: rgba(244, 244, 244, 0.9);
+  --discord-mention-bg: hsla(235, 85.6%, 90%, 0.7);
+  --discord-mention-color: #5865f2;
+
+  /* お知らせバナーの色変数 (ライトモード) */
+  --notification-bg: #ffe082; /* 明るい黄色 */
+  --notification-text-color: #333;
+  --notification-button-bg: #f4d32f;
+  --notification-button-text-color: #333;
+  --notification-close-btn-color: #555;
+
+  /* お知らせバナーの動的な高さとヘッダーのオフセットの初期値 */
+  --notification-banner-height: 0px; 
+  --header-offset-top: 0px; 
+}
+
+body.dark-mode {
+  /* ダークモードのカラー変数 */
+  --bg-color: #121212; /* 全体背景色をさらに黒に近づける */
+  --card-bg-light: rgba(30, 30, 30, 0.5); /* カード背景を暗く、透明度も調整 */
+  --card-bg-medium: rgba(40, 40, 40, 0.6); /* カード背景をさらに暗く、透明度も調整 */
+  --header-bg-start: rgba(20, 20, 20, 0.6); /* ヘッダーグラデ開始を暗く */
+  --header-bg-end: rgba(10, 10, 10, 0.6); /* ヘッダーグラデ終了を暗く */
+  --text-color: #e0e0e0; /* 文字色を明るくしてコントラストを高める */
+  --sub-text-color: #a0a0a0; /* サブテキスト色を少し明るく */
+  --border-color-light: rgba(255, 255, 255, 0.05); /* 薄いボーダーをさらに目立たなく */
+  --border-color-medium: rgba(70, 70, 70, 0.6); /* 中間ボーダーを暗く */
+  --dropdown-border-color: rgba(60, 60, 60, 0.6); /* ドロップダウンボーダーを暗く */
+  --shadow-color-light: rgba(0, 0, 0, 0.5); /* 影をより濃く */
+  --shadow-color-dark: rgba(0, 0, 0, 0.7); /* 影をさらに濃く */
+  --shadow-color-hover: rgba(0, 0, 0, 0.9); /* ホバー時の影を非常に濃く */
+  --spinner-border-color: rgba(255, 255, 255, 0.2); /* スピナーボーダーを少し明るく */
+  --spinner-left-color: #f0f0f0; /* スピナー左色を明るく */
+  --error-toast-bg: #b02a1b; /* エラートースト背景をより深みのある赤に */
+  --link-hover-bg: rgba(25, 25, 25, 0.9); /* リンクホバー背景を暗く */
+  --discord-mention-bg: hsla(235, 50%, 15%, 0.7); /* Discordメンション背景を暗く */
+  --discord-mention-color: #99aab5; /* Discordメンション色をDiscordの灰色に近づける */
+
+  --theme-color-dark-mode: #000000; /* ダークモード時のテーマカラーを純粋な黒に設定 */
+
+  /* お知らせバナーの色変数 (ダークモード) */
+  --notification-bg: #222; /* 暗い背景 */
+  --notification-text-color: #eee;
+  --notification-button-bg: #000000; /* ダークモードのアクセントカラー */
+  --notification-button-text-color: #eee;
+  --notification-close-btn-color: #aaa;
+
+  /* ダークモード用背景グラデーションをさらに調整 */
+  background-image:
+    radial-gradient(circle at 5% 15%, hsla(220, 10%, 8%, 0.2) 0px, transparent 70%),
+    radial-gradient(circle at 90% 85%, hsla(280, 10%, 8%, 0.2) 0px, transparent 70%),
+    radial-gradient(circle at 70% 20%, hsla(47, 25%, 15%, 0.25) 0px, transparent 70%);
+}
+
+body.dark-mode footer { /* フッターの背景色もダークモードで調整 */
+  background-color: rgba(var(--text-color), 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  padding-top: var(--header-height); /* 初期値としてヘッダーの高さ。JSで動的に更新 */
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 5% 15%, hsla(200, 60%, 80%, 0.25) 0px, transparent 70%),
+    radial-gradient(circle at 90% 85%, hsla(340, 65%, 85%, 0.25) 0px, transparent 70%),
+    radial-gradient(circle at 70% 20%, hsla(47, 85%, 75%, 0.28) 0px, transparent 70%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: padding-top 0.3s ease; /* padding-top の変化をスムーズに */
+}
+
+/* メインコンテンツエリアの左右余白をPC版で設定 */
+main {
+  flex-grow: 1;
+  padding: 0 2rem; /* PC版のmainの左右余白 */
+}
+
+/* お知らせバナーのスタイル */
+#notification-banner {
+  display: flex; /* JSで表示/非表示を制御 */
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--notification-bg);
+  color: var(--notification-text-color);
+  padding: 10px 20px; /* PC版のデフォルト */
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  position: fixed; /* ヘッダーの上に固定 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1002; /* ヘッダーより上に */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  flex-wrap: wrap; /* 小さい画面で折り返す */
+  box-sizing: border-box; /* paddingを含めて幅を計算 */
+}
+
+.notification-title {
+  margin: 0;
+  flex-shrink: 0; /* タイトルは縮まない */
+}
+
+.notification-button {
+  display: inline-block;
+  background-color: var(--notification-button-bg);
+  color: var(--notification-button-text-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap; /* ボタン内のテキストは改行しない */
+}
+
+.notification-button:hover {
+  background-color: var(--theme-color); /* ホバーでテーマカラー */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .notification-button:hover {
+  background-color: var(--theme-color-dark-mode); /* ダークモードのホバー色 */
+}
+
+.notification-close-btn {
+  background: none;
+  border: none;
+  color: var(--notification-close-btn-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s ease;
+  position: absolute; /* 右上に配置 */
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.notification-close-btn:hover {
+  color: var(--text-color);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(to right, var(--header-bg-start), var(--header-bg-end));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--theme-color);
+  position: fixed;
+  top: 0; /* JSで動的に上書きされます */
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-sizing: border-box;
+  transition: top 0.3s ease; /* top の変化をスムーズに */
+}
+
+body.dark-mode header { /* ダークモード時のヘッダーのボーダー色 */
+  border-bottom: 2px solid var(--theme-color-dark-mode);
+}
+
+h1 {
+  font-size: 1.2rem;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.menu-button {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1003;
+}
+
+.bar {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-color);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+
+.bar.top {
+  top: 6px;
+}
+
+.bar.bottom {
+  bottom: 6px;
+}
+
+.menu-button.open .bar.top {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menu-button.open .bar.bottom {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.avatar-button {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 1rem;
+  cursor: pointer;
+  border: 2px solid var(--theme-color);
+  background-color: var(--card-bg-light);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+body.dark-mode .avatar-button { /* ダークモード時のアバターボタンのボーダー色 */
+  border: 2px solid var(--theme-color-dark-mode);
+}
+
+#avatarIcon { /* ヘッダーのアバターアイコンのサイズを明確に指定 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像が収まるように */
+}
+
+.avatar-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px var(--shadow-color-dark);
+}
+
+.dropdown {
+  position: fixed;
+  right: 1rem;
+  top: 60px;
+  background: var(--card-bg-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--dropdown-border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+  display: none;
+  z-index: 100;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown a:hover {
+  background: var(--link-hover-bg);
+}
+
+/* ドロップダウン内のプロフィール情報 */
+.profile-info {
+  display: none; /* 初期状態を非表示にする */
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color-medium);
+  gap: 0.25rem;
+}
+
+.dropdown-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--theme-color);
+}
+
+body.dark-mode .dropdown-avatar { /* ダークモード時のプロフィールアバターの枠線色 */
+  border: 2px solid var(--theme-color-dark-mode);
+}
+
+.dropdown-username {
+  font-weight: bold;
+  color: var(--text-color);
+  word-break: break-all;
+  text-align: center;
+}
+
+.dropdown-id {
+  font-size: 0.8em;
+  color: var(--sub-text-color);
+  word-break: break-all;
+  text-align: center;
+}
+
+/* ダークモードトグルスイッチのスタイル */
+.dark-mode-toggle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color-medium);
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/* トグルスイッチ本体 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* チェックボックスを非表示に */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* スライダーの背景 */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+/* スライダーの丸い部分 */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+}
+
+/* チェックされた時の背景色 (ON時の色) */
+input:checked + .slider {
+  background-color: var(--theme-color); /* ライトモードのテーマカラー */
+}
+/* ダークモード時のスイッチONの背景色 */
+body.dark-mode input:checked + .slider {
+  background-color: var(--theme-color-dark-mode); /* ダークモードのテーマカラー */
+}
+
+/* チェックされた時の丸の移動 */
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* 角丸にする */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.side-menu {
+  position: fixed;
+  top: var(--header-height); /* JSで動的に上書きされる初期値 */
+  height: calc(100vh - var(--header-height)); /* JSで動的に上書きされる初期値 */
+  padding-top: 1rem;
+  left: -250px;
+  width: 250px;
+  background: linear-gradient(to bottom, var(--header-bg-start), var(--header-bg-end));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 2px 0 10px var(--shadow-color-light);
+  transition: left 0.3s ease;
+  z-index: 1002;
+  overflow-y: auto; /* メニュー内容がはみ出す場合にスクロール可能にする */
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color-medium);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.side-menu a:hover {
+  background: var(--link-hover-bg);
+  color: var(--sub-text-color);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero {
+  padding: 6rem 2rem; /* PC版のデフォルト: 左右2remのパディングを維持 */
+  text-align: center;
+  background: var(--card-bg-light);
+  margin: 4rem auto 2rem auto;
+  max-width: 1200px; /* 固定幅 */
+  border-radius: 15px; /* 値を大きくしてより丸くする */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color-light);
+  box-shadow: inset 0 2px 4px var(--card-bg-light), 0 4px 10px var(--shadow-color-light);
+}
+
+.hero:hover {
+  transform: translateY(-5px);
+  box-shadow: inset 0 2px 4px var(--card-bg-light), 0 8px 15px var(--shadow-color-dark);
+}
+
+.hero h2 {
+  font-size: 3.0rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+.btn {
+  background: var(--theme-color);
+  color: var(--text-color);
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+body.dark-mode .btn { /* ダークモード時のボタンの背景色 */
+  background: var(--theme-color-dark-mode);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.content-section {
+  padding: 2.5rem 2.5rem; /* PC版のデフォルト: 左右2.5remのパディングを維持 */
+  max-width: 1200px; /* 固定幅 */
+  margin: 3rem auto 1.5rem auto;
+  border-radius: 15px;
+  background: var(--card-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color-light);
+  box-shadow: inset 0 2px 4px var(--card-bg-light), 0 4px 10px var(--shadow-color-light);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-section:hover {
+  transform: translateY(-5px);
+  box-shadow: inset 0 2px 4px var(--card-bg-light), 0 8px 15px var(--shadow-color-dark);
+}
+
+.content-section h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.section-description {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-item {
+  background-color: var(--card-bg-medium);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature-item:hover {
+  transform: scale(1.03);
+}
+
+.feature-item h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--theme-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .feature-item h4 { /* ダークモード時のボーダー色 */
+  border-bottom: 2px solid var(--theme-color-dark-mode);
+}
+
+.feature-item p {
+  line-height: 1.6;
+  margin-bottom: 0;
+  color: var(--text-color);
+}
+
+.event-list {
+  list-style-type: '▪️';
+  padding-left: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.event-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  color: var(--text-color);
+}
+
+.faq-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color-light);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item:hover {
+  background-color: var(--card-bg-medium);
+  box-shadow: 0 4px 10px var(--shadow-color-light);
+  cursor: pointer;
+}
+
+.faq-item summary {
+  padding: 1.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  color: var(--text-color);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 1rem;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+  color: var(--sub-text-color);
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  line-height: 1.7;
+  margin: 0;
+  color: var(--text-color);
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.join-steps {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.step {
+  flex-basis: 250px;
+  text-align: center;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: var(--theme-color);
+  color: var(--text-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 1rem auto;
+}
+
+body.dark-mode .step-number { /* ダークモード時のステップナンバー背景色 */
+  background: var(--theme-color-dark-mode);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: rgba(244, 211, 47, 0.6); /* この色はテーマカラー変数化するともっと良い */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-top: 1.5rem;
+  color: var(--text-color);
+}
+
+.loading-spinner {
+  border: 4px solid var(--spinner-border-color);
+  border-left-color: var(--spinner-left-color);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -14px;
+  margin-left: -14px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--error-toast-bg);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px var(--shadow-color-dark);
+  z-index: 2000;
+  transition: bottom 0.5s ease-in-out;
+  font-weight: bold;
+}
+
+.error-toast.show {
+  bottom: 20px;
+}
+
+.custom-layout-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px; /* 固定幅 */
+  margin: 3rem auto;
+  align-items: stretch;
+  padding: 0 2rem; /* PC版のデフォルト: 左右2remのパディングを維持 */
+}
+
+.custom-layout-left {
+  flex: 6; /* 60%の幅 */
+  min-width: 300px; /* 最小幅 */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.custom-layout-right {
+  flex: 4; /* 40%の幅 */
+  min-width: 300px; /* 最小幅 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* コンテンツを中央寄せ */
+  align-items: flex-start; /* 上端に揃える */
+}
+
+/* custom-layout-left と custom-layout-right 内の content-section は親の幅いっぱいに */
+.custom-layout-left .content-section,
+.custom-layout-right .content-section {
+  width: 100%;
+  margin: 0; /* 親のgapでマージンは管理 */
+  /* 内部パディングは .content-section の汎用スタイルから継承 */
+}
+
+/* Discordウィジェットのiframeの幅を親に合わせる */
+.custom-layout-right iframe {
+  width: 100%;
+  height: 500px; /* PCでの高さ */
+  max-width: 100%; /* 親の幅を越えない */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-color-light);
+}
+
+.main-page-title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 3rem auto 3rem auto;
+  color: var(--text-color);
+}
+
+.role-block {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color-light);
+}
+
+.role-title {
+  font-size: 1.8rem;
+  border-bottom: 3px solid var(--theme-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+body.dark-mode .role-title { /* ダークモード時のボーダー色 */
+  border-bottom: 3px solid var(--theme-color-dark-mode);
+}
+
+.role-description {
+  color: var(--sub-text-color);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.member-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.member-list:empty::after {
+  content: "現在、このレベルの支援者はいません。";
+  display: block;
+  text-align: center;
+  padding: 2rem 0;
+  font-style: italic;
+  color: var(--sub-text-color);
+}
+
+.member-item {
+  background-color: var(--card-bg-medium);
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.member-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color-light);
+}
+
+.member-avatar { /* このスタイルがmember-item内の画像に適用されます */
+  width: 50px !important; /* 強制的に50pxに設定 */
+  height: 50px !important; /* 強制的に50pxに設定 */
+  border-radius: 50%;
+  margin-right: 1rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.member-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.member-id {
+  font-size: 0.8rem;
+  color: var(--sub-text-color);
+  word-break: break-all;
+}
+
+.rules-container {
+  max-width: 1200px; /* 固定幅 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 2rem; /* PC版のデフォルト: 左右2remのパディングを維持 */
+}
+
+.rules-container .content-section {
+  margin: 0 auto;
+}
+
+.rule-article-title {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.rule-article h4,
+.rule-subheader {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 5px solid var(--theme-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .rule-article h4, /* ダークモード時のボーダー色 */
+body.dark-mode .rule-subheader {
+  border-left: 5px solid var(--theme-color-dark-mode);
+}
+
+.rule-article ul {
+  padding-left: 20px;
+}
+
+.rule-article ul li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+.rule-exception {
+  background-color: transparent;
+  border-left: none;
+  padding: 1rem 1.5rem;
+  margin: 1rem 2rem;
+}
+
+.rule-exception p {
+  margin: 0;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+.discord-channel-mention {
+  background-color: var(--discord-mention-bg);
+  color: var(--discord-mention-color);
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.warning-levels-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .warning-levels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .warning-levels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.warning-level-card {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-bg-light);
+  border-radius: 15px; /* 値を大きくしてより丸くする */
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem; /* PC版のデフォルト: 左右1.5remのパディングを維持 */
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.warning-level-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px var(--shadow-color-hover);
+}
+
+.wlc-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.wlc-subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--sub-text-color);
+}
+
+.warning-level-card ul {
+  padding-left: 1.25rem;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.warning-level-card ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.wlc-punishment {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  padding: 0.75rem;
+  background-color: var(--border-color-light);
+  border-radius: 6px;
+  color: var(--text-color);
+}
+
+.no-supporters {
+  font-style: italic;
+  color: var(--sub-text-color);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.supporter-lv5 {
+  box-shadow: 0 0 12px var(--shadow-color-light);
+}
+.supporter-lv4 {
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+}
+.supporter-lv-kami {
+  box-shadow: 0 0 6px var(--shadow-color-light); /* 通常の影のスタイルを適用 */
+}
+
+.form-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 145%;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  border-radius: 15px; /* 角丸設定 */
+  max-width: 1200px; /* 固定幅 */
+  margin-left: auto; /* 中央寄せ */
+  margin-right: auto; /* 中央寄せ */
+  padding: 0 2rem; /* PC版のデフォルト: 左右2remのパディングを維持 */
+}
+
+.form-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-color-light);
+  border-radius: 15px; /* 角丸設定 */
+}
+
+/* カーソル追従エフェクト用 */
+.sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0);
+  animation: sparkle-fade-out 0.8s forwards ease-out;
+  z-index: 9999;
+}
+
+@keyframes sparkle-fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9), 0 0 20px 8px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0);
+  }
+}
+
+/* 背景浮き上がりアイコン用 */
+.floating-bungu {
+  position: fixed;
+  font-size: 24px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  animation: float-up-fade-out 10s forwards ease-out;
+}
+
+@keyframes float-up-fade-out {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) scale(1.2);
+  }
+}
+
+@media (min-width: 700px) {
+  .warning-levels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .warning-levels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  /* main に左右のパディングを追加し、全てのコンテンツがその内側に表示されるようにする */
+  main {
+    padding: 0 2%; /* mainに左右2%の余白を追加 */
+  }
+
+  /* 個々のコンテンツブロックの左右パディングをモバイル向けに再設定 */
+  .hero {
+    padding: 6rem 1.5rem; /* 上下は既存、左右に1.5remの固定パディング */
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin: 4rem auto 2rem auto; /* 中央寄せ */
+  }
+  .content-section {
+    padding: 2.5rem 1.5rem; /* 上下は既存、左右に1.5remの固定パディング */
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 3rem auto 1.5rem auto; /* 中央寄せ */
+  }
+  .custom-layout-container {
+    padding: 0 1.5rem; /* 左右に1.5remの固定パディング */
+    margin: 3rem auto; /* 中央寄せ */
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-direction: column; /* モバイルで縦積み */
+    gap: 1.5rem; /* 縦積みになったときの要素間の隙間を調整 */
+  }
+  .rules-container {
+    padding: 0 1.5rem; /* 左右に1.5remの固定パディング */
+    margin: 0 auto; /* 中央寄せ */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .warning-level-card {
+    padding: 1.5rem 1.5rem; /* 左右に1.5remの固定パディング */
+    box-sizing: border-box;
+  }
+  .form-container {
+    padding: 0 1.5rem; /* 左右に1.5remの固定パディング */
+    margin: 2rem auto 0 auto; /* 中央寄せ */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* #notification-banner は fixed なので直接パディング */
+  #notification-banner {
+    padding: 10px 1.5rem; /* 左右に1.5remのパディング */
+    box-sizing: border-box;
+  }
+  .notification-close-btn {
+    right: 1.5rem; /* 右端からの位置も調整 */
+  }
+
+  /* その他の既存のメディアクエリ内スタイルも残す */
+  .custom-layout-left,
+  .custom-layout-right {
+    flex-basis: 100%;
+    order: unset; /* order属性をリセットし、HTMLの順序に従う */
+  }
+  .custom-layout-right { /* モバイルで「サーバーの様子」を上に表示したい場合のみ */
+    order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --header-height: 60px;
+  }
+  body {
+    padding-top: var(--header-height);
+  }
+  header {
+    padding: 0.75rem;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  .dropdown {
+    top: 55px;
+  }
+  .side-menu {
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+  }
+  
+  .hero {
+    padding: 4rem 1.5rem; /* 上下のパディングは調整、左右は固定値で余白維持 */
+  }
+  /* 個々のコンテンツセクションは左右パディング固定値で維持 */
+  .content-section,
+  .custom-layout-container,
+  .rules-container,
+  #notification-banner,
+  .warning-level-card,
+  .form-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      box-sizing: border-box;
+  }
+  /* notification-banner の閉じるボタン調整 */
+  #notification-banner .notification-close-btn {
+      right: 1.5rem;
+  }
+}
